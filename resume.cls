@@ -11,10 +11,13 @@
 % without any warranty.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% \usepackage[T1]{fontenc}
+% \usepackage{mathpazo,euler}
+% \usepackage[scaled=0.9]{DejaVuSansMono}
+% \usepackage[utf8]{inputenc}
 \ProvidesClass{resume}[2010/07/10 v0.9 Resume class]
 
-\LoadClass[11pt,letterpaper]{article}
+\LoadClass[12pt,letterpaper]{article}
 
 \usepackage[parfill]{parskip}       % Do not indent paragraphs
 \usepackage{array}                  % required for boldface tabular columns
@@ -85,8 +88,7 @@
   \sectionlineskip
   \hrule
   \begin{list}{}{
-    \setlength{\leftmargin}{1.5em}
-  }
+    \setlength{\leftmargin}{1.0em} }
   \item[]
 }{
   \end{list}
@@ -116,3 +118,27 @@
 \def\addressskip{\smallskip}
 \def\sectionskip{\bigskip}
 \def\sectionlineskip{\medskip}
+
+% add boarder
+\usepackage{pgf}
+\usepackage{pgfpages}
+\pgfpagesdeclarelayout{boxed}
+{
+  \edef\pgfpageoptionborder{0pt}
+}
+{
+  \pgfpagesphysicalpageoptions
+  {%
+    logical pages=1,%
+  }
+  \pgfpageslogicalpageoptions{1}
+  {
+    border code=\pgfsetlinewidth{2pt}\pgfstroke,%
+    border shrink=\pgfpageoptionborder,%
+    resized width=.97\pgfphysicalwidth,%
+    resized height=.97\pgfphysicalheight,%
+    center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
+  }%
+}
+
+\pgfpagesuselayout{boxed}
